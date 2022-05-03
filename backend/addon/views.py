@@ -1,4 +1,3 @@
-from turtle import st
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
@@ -18,7 +17,7 @@ def get_all_addons(request):
     return Response(serializer.data)
 
 
-@api_view(['GET', 'POST', 'PUT'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def addon_list(request):
     if request.method == 'POST':
@@ -35,7 +34,7 @@ def addon_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def addon_list(request,pk):
+def addon_details(request,pk):
     addon=get_object_or_404(Addon, pk=pk)
     if request.method == 'GET':
         serializer = AddonSerializer(addon)
