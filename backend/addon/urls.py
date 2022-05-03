@@ -6,4 +6,5 @@ from addon import views
 urlpatterns = [
     path('', views.addon_list),
     path('all/', views.get_all_addons),
+    path('<int:pk>/', views.addon_list)
 ]

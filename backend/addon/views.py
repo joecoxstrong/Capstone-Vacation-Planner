@@ -1,4 +1,5 @@
 from turtle import st
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -17,7 +18,7 @@ def get_all_addons(request):
     return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT'])
 @permission_classes([IsAuthenticated])
 def addon_list(request):
     if request.method == 'POST':
@@ -30,3 +31,20 @@ def addon_list(request):
         addons = Addon.objects.filter(user_id=request.user.id)
         serializer = AddonSerializer(addons, many=True)
         return Response(serializer.data)
+    
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def addon_list(request,pk):
+    addon=get_object_or_404(Addon, pk=pk)
+    if request.method == 'GET':
+        serializer = AddonSerializer(addon)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = AddonSerializer(addon, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    elif request.method == 'DELETE':
+        addon.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)    
