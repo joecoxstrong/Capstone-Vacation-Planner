@@ -14,4 +14,4 @@ class Vacation_Plan(models.Model):
     total_days = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.park_name
+        return self.customer

@@ -4,7 +4,7 @@ from django.db import models;
 
 
 # Create your models here.
-class Addons(models.Model):
+class Addon(models.Model):
     addon_name = models.CharField(max_length=200)
     addon_desctription = models.TextField()
     

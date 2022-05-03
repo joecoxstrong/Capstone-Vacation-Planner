@@ -1,4 +1,4 @@
 from django.contrib import admin
-from addons.models import Addons
+from addon.models import Addon
 # Register your models here.
-admin.site.register(Addons)
+admin.site.register(Addon)

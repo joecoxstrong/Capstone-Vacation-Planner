@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'address',
     'customer',
     'hotel',
-    'addons',
+    'addon',
     'park',
     'vacation_plan'
 ]
