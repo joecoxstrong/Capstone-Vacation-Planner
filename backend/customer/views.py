@@ -15,7 +15,7 @@ from .serializers import CustomerSerializer
 def customer_list(request):
     if request.method == 'POST':
         serializer = CustomerSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
@@ -31,8 +31,8 @@ def customer_details(request, pk):
     if request.method == 'GET':
         serializer = CustomerSerializer(customer)
         return Response(serializer.data)
-    elif request.method == 'Put':
-        serializer = CustomerSerializer(Customer, data=request.data)
+    elif request.method == 'PUT':
+        serializer = CustomerSerializer(customer, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
