@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/addon/', include('addon.urls')),
     path('api/address/', include('address.urls')),
     path('api/customer/', include('customer.urls')),
+    path('api/hotel/', include('hotel.urls')),
 ]

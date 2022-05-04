@@ -10,6 +10,6 @@ class Customer(models.Model):
     email = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
-
+    
     def __str__(self) -> str:
         return self.first_name
