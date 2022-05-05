@@ -12,4 +12,4 @@ class CustomerSerializer(serializers.ModelSerializer):
 
 
     address_id = serializers.IntegerField(write_only=True)
-    # user_id = serializers.IntegerField(write_only=True)
+    

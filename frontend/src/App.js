@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import VacationHomePage from "./pages/HomePage/VacationHomePage";
 import CustomerPage from "./pages/CustomerPage";
+import HotelPage from "./pages/HotelPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -18,7 +19,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
-    <div className="background">
+    <div >
       <Navbar />
       <Routes>
         <Route
@@ -34,8 +35,15 @@ function App() {
           path="/customer/"
           element={
             <PrivateRoute>
-              
               <CustomerPage  />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/hotel/"
+          element={
+            <PrivateRoute>
+              <HotelPage  />
             </PrivateRoute>
           }
         />
