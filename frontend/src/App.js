@@ -10,6 +10,7 @@ import VacationHomePage from "./pages/HomePage/VacationHomePage";
 import CustomerPage from "./pages/CustomerPage";
 import HotelPage from "./pages/HotelPage";
 import ParksPage from "./pages/ParksPage";
+import VacationPlanPage from "./pages/VacationPlanPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -53,6 +54,13 @@ function App() {
           element={
             <PrivateRoute>
               <ParksPage  />
+            </PrivateRoute>
+          }/>
+          <Route
+          path="/vacation_plan/"
+          element={
+            <PrivateRoute>
+              <VacationPlanPage  />
             </PrivateRoute>
           }/>
         <Route path="/register" element={<RegisterPage />} />

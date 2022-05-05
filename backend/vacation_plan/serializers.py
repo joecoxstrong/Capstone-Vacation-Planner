@@ -7,7 +7,7 @@ from .models import Vacation_Plan
 class Vacation_PlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacation_Plan
-        fields = ['id', 'customer', 'customer_id', 'hotel', 'hotel_id', 'park', 'park_id', 'total_travelers', 'start_date', 'total_days']
+        fields = ['id', 'customer', 'customer_id', 'hotel', 'hotel_id', 'park', 'park_id', 'total_travelers', 'start_date', 'total_days', 'user_id']
         depth = 1
 
 
