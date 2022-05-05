@@ -38,6 +38,7 @@ button:hover {
   max-width: 600px;
   overflow: auto;
   text-align: center;
+  color: white
 }
 
 .form {
@@ -55,4 +56,13 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+
+.background{
+  
+  background-image: url("https://img5.travelagenciesfinder.com/033/367/120211590333670.jpg");
+  background-size: cover;
+ 
+  
 }

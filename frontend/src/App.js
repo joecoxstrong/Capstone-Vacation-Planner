@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import VacationHomePage from "./pages/HomePage/VacationHomePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -16,14 +17,15 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
-    <div>
+    <div className="background">
       <Navbar />
       <Routes>
         <Route
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              {/* <HomePage /> */}
+              <VacationHomePage  />
             </PrivateRoute>
           }
         />
