@@ -38,7 +38,7 @@ button:hover {
   max-width: 600px;
   overflow: auto;
   text-align: center;
-  color: white
+  color: black
 }
 
 .form {
@@ -61,9 +61,9 @@ button:hover {
 
 .background{
   
-  background-image: url("https://img5.travelagenciesfinder.com/033/367/120211590333670.jpg");
+  background-image: url("https://i.pinimg.com/1200x/89/10/14/891014b8cad4c34a4bd28e4dec91356d.jpg");
   background-size: cover;
-  opacity: .40;
+  
   position:sticky;
  
   

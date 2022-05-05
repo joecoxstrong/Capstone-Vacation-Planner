@@ -12,7 +12,33 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>Home</b>
+          </Link>
+        </li>
+        <li className="brand">
+          <Link
+            to="/customer/"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>Customer</b>
+          </Link>
+        </li>
+        <li className="brand">
+          <Link to="/parks/" style={{ textDecoration: "none", color: "white" }}>
+            <b>Parks</b>
+          </Link>
+        </li>
+        <li className="brand">
+          <Link to="/hotel/" style={{ textDecoration: "none", color: "white" }}>
+            <b>Hotels</b>
+          </Link>
+        </li>
+        <li className="brand">
+          <Link
+            to="/vacation_plan/"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>Vacation Plans</b>
           </Link>
         </li>
         <li>
