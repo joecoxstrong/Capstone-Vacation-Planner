@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
 import axios from "axios";
+import AddHotel from "../components/AddHotel";
 
 const HotelPage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -26,9 +27,15 @@ const HotelPage = () => {
     };
     fetchHotels();
   }, [token]);
+
+  function addNewHotel(hotel) {
+    let tempHotels = [hotel, ...hotels];
+    setHotels(tempHotels);
+  }
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available hotels!</h1>
+      <AddHotel addNewHotelProperty={addNewHotel} />
       {hotels &&
         hotels.map((hotel) => (
           <p key={hotel.id}>

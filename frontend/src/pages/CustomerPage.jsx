@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import AddCustomer from "../components/AddCustomer";
 
 import axios from "axios";
 
@@ -30,9 +31,15 @@ const CustomerPage = () => {
     };
     fetchCustomers();
   }, [token]);
+
+  function addNewCustomer(customer) {
+    let tempCustomers = [customer, ...customers];
+    setCustomers(tempCustomers);
+  }
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of your customers!</h1>
+      <AddCustomer addNewCostomerProperty={addNewCustomer} />
       {customers &&
         customers.map((customer) => (
           <p key={customer.id}>
