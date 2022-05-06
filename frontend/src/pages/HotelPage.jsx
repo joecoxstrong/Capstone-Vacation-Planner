@@ -27,16 +27,14 @@ const HotelPage = () => {
     fetchHotels();
   }, [token]);
   return (
-    <div className="background">
-      <div className="container">
-        <h1>{user.first_name}, here is a list of available hotels!</h1>
-        {hotels &&
-          hotels.map((hotel) => (
-            <p key={hotel.id}>
-              {hotel.hotel_name} {hotel.hotel_link}
-            </p>
-          ))}
-      </div>
+    <div className="container">
+      <h1>{user.first_name}, here is a list of available hotels!</h1>
+      {hotels &&
+        hotels.map((hotel) => (
+          <p key={hotel.id}>
+            {hotel.hotel_name} {hotel.hotel_link}
+          </p>
+        ))}
     </div>
   );
 };

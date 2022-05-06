@@ -9,7 +9,7 @@ const CustomerPage = () => {
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -31,16 +31,15 @@ const CustomerPage = () => {
     fetchCustomers();
   }, [token]);
   return (
-    <div className="background">
-      <div className="container">
-        <h1>{user.first_name}, here is a list of your customers!</h1>
-        {customers &&
-          customers.map((customer) => (
-            <p key={customer.id}>
-              {customer.first_name} {customer.last_name}
-            </p>
-          ))}
-      </div>
+    <div className="container">
+      <h1>{user.first_name}, here is a list of your customers!</h1>
+      {customers &&
+        customers.map((customer) => (
+          <p key={customer.id}>
+            {customer.first_name} {customer.last_name}
+            {" from "} {customer.address.city}
+          </p>
+        ))}
     </div>
   );
 };

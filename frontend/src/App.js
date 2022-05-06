@@ -23,6 +23,8 @@ function App() {
   return (
     <div >
       <Navbar />
+      <div className="hero">
+       
       <Routes>
         <Route
           path="/"
@@ -67,6 +69,9 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
       </Routes>
       <Footer />
+
+      </div>
+      
     </div>
   );
 }

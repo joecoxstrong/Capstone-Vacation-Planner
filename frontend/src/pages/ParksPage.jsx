@@ -27,16 +27,14 @@ const ParksPage = () => {
     fetchParks();
   }, [token]);
   return (
-    <div className="background">
-      <div className="container">
-        <h1>{user.first_name}, here is a list of available parks!</h1>
-        {parks &&
-          parks.map((park) => (
-            <p key={park.id}>
-              {park.park_name} {park.park_link}
-            </p>
-          ))}
-      </div>
+    <div className="container">
+      <h1>{user.first_name}, here is a list of available parks!</h1>
+      {parks &&
+        parks.map((park) => (
+          <p key={park.id}>
+            {park.park_name} {park.park_link}
+          </p>
+        ))}
     </div>
   );
 };

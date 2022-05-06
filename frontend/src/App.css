@@ -18,9 +18,9 @@ p {
 }
 
 button {
-  background-color: transparent;
+  background-color: rgb(2, 33, 133);
   border: 2px solid steelblue;
-  color: steelblue;
+  color: rgb(136, 220, 248);
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
@@ -34,11 +34,13 @@ button:hover {
 }
 
 .container {
+  position: relative;
   margin: 0 auto;
-  max-width: 600px;
+  
   overflow: auto;
   text-align: center;
-  color: black
+  color: black;
+  text-shadow: 1px 1px white;
 }
 
 .form {
@@ -59,12 +61,53 @@ button:hover {
 }
 
 
-.background{
+/* .background{
   
   background-image: url("https://i.pinimg.com/1200x/89/10/14/891014b8cad4c34a4bd28e4dec91356d.jpg");
-  background-size: cover;
   
-  position:sticky;
- 
+  background-repeat: no-repeat;
+  background-position: top center ;
+  opacity: .6;
   
+ padding-top: 100px;
+ padding-bottom: 300px;
+  
+} */
+
+.hero {
+  position: relative; 
+  height:100vmin;
+  width: 100%;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  padding-top: 10vh;
+}
+
+.hero::before {    
+    content: "";
+    background-image: url('https://i.pinimg.com/1200x/89/10/14/891014b8cad4c34a4bd28e4dec91356d.jpg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+
+    /* background-repeat: no-repeat;
+    background-position: top center ; */
+    opacity: .6;
+  
+    /* padding-top: 100px;
+    padding-bottom: 300px; */
+}
+
+h1 {
+position: relative;
+color:black;  
+font-size: 4rem;
+line-height: 0.9;
+text-align: center;
 }

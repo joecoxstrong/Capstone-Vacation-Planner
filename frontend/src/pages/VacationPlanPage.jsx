@@ -30,25 +30,22 @@ const VacationPlanPage = () => {
     fetchVacationPlans();
   }, [token]);
   return (
-    <div className="background">
-      <div className="container">
-        <h1>
-          {user.first_name}, here is a list of vacation plans for your
-          customers!
-        </h1>
-        {vacationPlans &&
-          vacationPlans.map((vacationPlan) => (
-            <p key={vacationPlan.id}>
-              {vacationPlan.customer.first_name}{" "}
-              {vacationPlan.customer.last_name} {vacationPlan.hotel.hotel_name}{" "}
-              {vacationPlan.park.park_name} {vacationPlan.total_travelers}
-              {" Travelers"} {vacationPlan.start_date}
-              {" Begin Date"}
-              {vacationPlan.total_days}
-              {" Days"}
-            </p>
-          ))}
-      </div>
+    <div className="container">
+      <h1>
+        {user.first_name}, here is a list of vacation plans for your customers!
+      </h1>
+      {vacationPlans &&
+        vacationPlans.map((vacationPlan) => (
+          <p key={vacationPlan.id}>
+            {vacationPlan.customer.first_name} {vacationPlan.customer.last_name}{" "}
+            {vacationPlan.hotel.hotel_name} {vacationPlan.park.park_name}{" "}
+            {vacationPlan.total_travelers}
+            {" Travelers"} {vacationPlan.start_date}
+            {" Begin Date"}
+            {vacationPlan.total_days}
+            {" Days"}
+          </p>
+        ))}
     </div>
   );
 };

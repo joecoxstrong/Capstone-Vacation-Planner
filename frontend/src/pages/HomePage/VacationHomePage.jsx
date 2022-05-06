@@ -31,15 +31,14 @@ const VacationHomePage = () => {
     fetchCustomers();
   }, [token]);
   return (
-    <div className="background">
-      <div className="container">
-        <h1>Welcome {user.first_name}!</h1>
-        {customers &&
-          customers.map((customer) => (
-            <p key={customer.id}>
-              {customer.first_name} {customer.last_name}
-            </p>
-          ))}
+    <div className="container">
+      <h1>Welcome {user.first_name}!</h1>
+      <div>
+        <h2>Here is a tool that you</h2>
+        <h2>can use as a vacation planner</h2>
+        <h2>to begin creating those</h2>
+        <h2>dream vacations</h2>
+        <h2>for all of your amazing clients!!</h2>
       </div>
     </div>
   );
