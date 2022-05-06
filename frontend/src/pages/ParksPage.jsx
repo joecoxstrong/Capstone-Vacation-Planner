@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-
+import AddNewPark from "../components/AddNewPark";
 import axios from "axios";
 
 const ParksPage = () => {
@@ -26,9 +26,15 @@ const ParksPage = () => {
     };
     fetchParks();
   }, [token]);
+  function addNewPark(park) {
+    let tempParks = [park, ...parks];
+    setParks(tempParks);
+  }
+
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available parks!</h1>
+      <AddNewPark addNewParkProperty={addNewPark} />
       {parks &&
         parks.map((park) => (
           <p key={park.id}>
