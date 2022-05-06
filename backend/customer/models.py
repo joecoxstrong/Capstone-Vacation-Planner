@@ -1,5 +1,5 @@
 from django.db import models
-from address.models import Address
+
 from authentication.models import User
 
 
@@ -11,7 +11,10 @@ class Customer(models.Model):
     last_name = models.CharField(max_length=200)
     email = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    street = models.CharField(max_length=255, default=None)
+    city = models.CharField(max_length=255, default=None)
+    state = models.CharField(max_length=255, default=None)
+    zipcode = models.IntegerField(default=None)
     
     def __str__(self) -> str:
         return self.first_name

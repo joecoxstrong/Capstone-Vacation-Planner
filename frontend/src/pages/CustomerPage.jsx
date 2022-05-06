@@ -37,7 +37,7 @@ const CustomerPage = () => {
         customers.map((customer) => (
           <p key={customer.id}>
             {customer.first_name} {customer.last_name}
-            {" from "} {customer.address.city}
+            {" from "} {customer.city}
           </p>
         ))}
     </div>

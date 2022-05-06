@@ -38,9 +38,9 @@ button:hover {
   margin: 0 auto;
   
   overflow: auto;
-  text-align: center;
+  text-align: left;
   color: black;
-  text-shadow: 1px 1px white;
+  
 }
 
 .form {
