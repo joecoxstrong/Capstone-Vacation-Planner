@@ -57,68 +57,66 @@ const AddCustomer = (props) => {
   }
 
   return (
-    <div class="row mb-3">
-      <div class="col-sm-10">
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            placeholder="First Name"
-            type="text"
-            name="first_name"
-            value={first_name}
-            onChange={(event) => setFirst_Name(event.target.value)}
-          ></input>
-          <input
-            placeholder="Last Name"
-            type="text"
-            name="last_name"
-            value={last_name}
-            onChange={(event) => setLast_Name(event.target.value)}
-          ></input>
-          <input
-            placeholder="Email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          ></input>
-          <input
-            placeholder="Phone Number"
-            type="number"
-            name="phone_number"
-            value={phone_number}
-            onChange={(event) => setPhone_Number(event.target.value)}
-          ></input>
-          <input
-            placeholder="Street"
-            type="text"
-            name="street"
-            value={street}
-            onChange={(event) => setStreet(event.target.value)}
-          ></input>
-          <input
-            placeholder="City"
-            type="text"
-            name="city"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          ></input>
-          <input
-            placeholder="State"
-            type="text"
-            name="state"
-            value={state}
-            onChange={(event) => setState(event.target.value)}
-          ></input>
-          <input
-            placeholder="Zipcode"
-            type="number"
-            name="zipcode"
-            value={zipcode}
-            onChange={(event) => setZipcode(event.target.value)}
-          ></input>
-          <button type="submit">ADD CUSTOMER</button>
-        </form>
-      </div>
+    <div>
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          placeholder="First Name"
+          type="text"
+          name="first_name"
+          value={first_name}
+          onChange={(event) => setFirst_Name(event.target.value)}
+        ></input>
+        <input
+          placeholder="Last Name"
+          type="text"
+          name="last_name"
+          value={last_name}
+          onChange={(event) => setLast_Name(event.target.value)}
+        ></input>
+        <input
+          placeholder="Email"
+          type="text"
+          name="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        ></input>
+        <input
+          placeholder="Phone Number"
+          type="number"
+          name="phone_number"
+          value={phone_number}
+          onChange={(event) => setPhone_Number(event.target.value)}
+        ></input>
+        <input
+          placeholder="Street"
+          type="text"
+          name="street"
+          value={street}
+          onChange={(event) => setStreet(event.target.value)}
+        ></input>
+        <input
+          placeholder="City"
+          type="text"
+          name="city"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
+        ></input>
+        <input
+          placeholder="State"
+          type="text"
+          name="state"
+          value={state}
+          onChange={(event) => setState(event.target.value)}
+        ></input>
+        <input
+          placeholder="Zipcode"
+          type="number"
+          name="zipcode"
+          value={zipcode}
+          onChange={(event) => setZipcode(event.target.value)}
+        ></input>
+        <button type="submit">ADD CUSTOMER</button>
+      </form>
     </div>
   );
 };

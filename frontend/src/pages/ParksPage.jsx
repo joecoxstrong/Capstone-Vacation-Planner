@@ -35,12 +35,8 @@ const ParksPage = () => {
     <div className="container">
       <h1>{user.first_name}, here is a list of available parks!</h1>
       <AddNewPark addNewParkProperty={addNewPark} />
-      {parks &&
-        parks.map((park) => (
-          <p key={park.id}>
-            {park.park_name} {park.park_link}
-          </p>
-        ))}
+
+      {parks && parks.map((park) => <p key={park.id}>{park.park_name}</p>)}
     </div>
   );
 };
