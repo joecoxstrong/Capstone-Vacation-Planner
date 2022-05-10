@@ -11,6 +11,7 @@ import CustomerPage from "./pages/CustomerPage";
 import HotelPage from "./pages/HotelPage";
 import ParksPage from "./pages/ParksPage";
 import VacationPlanPage from "./pages/VacationPlanPage";
+import AddonPage from "./pages/AddonPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -58,6 +59,13 @@ function App() {
           element={
             <PrivateRoute>
               <ParksPage  />
+            </PrivateRoute>
+          }/>
+        <Route
+          path="/addon/"
+          element={
+            <PrivateRoute>
+              <AddonPage  />
             </PrivateRoute>
           }/>
           <Route

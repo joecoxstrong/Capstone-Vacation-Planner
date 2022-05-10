@@ -9,12 +9,6 @@ from .serializers import AddonSerializer
 # Create your views here.
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def get_all_addons(request):
-    addons = Addon.objects.all()
-    serializer = AddonSerializer(addons, many=True)
-    return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
@@ -23,7 +17,7 @@ def addon_list(request):
     if request.method == 'POST':
         serializer = AddonSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':

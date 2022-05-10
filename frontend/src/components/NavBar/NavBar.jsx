@@ -34,6 +34,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="brand">
+          <Link to="/addon/" style={{ textDecoration: "none", color: "white" }}>
+            <b>Addons</b>
+          </Link>
+        </li>
+        <li className="brand">
           <Link
             to="/vacation_plan/"
             style={{ textDecoration: "none", color: "white" }}

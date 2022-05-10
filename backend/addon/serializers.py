@@ -7,5 +7,7 @@ from .models import Addon
 class AddonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Addon
-        fields = ['id', 'addon_name', 'addon_description']
+        fields = ['id', 'addon_name', 'addon_description', 'addon_price', 'user_id']
         depth = 1
+
+    

@@ -7,5 +7,5 @@ from .models import Park
 class ParkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Park
-        fields = ['id', 'park_name', 'park_link', 'user_id']
+        fields = ['id', 'park_name', 'park_link', 'park_cost', 'user_id']
         depth = 1

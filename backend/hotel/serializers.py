@@ -7,5 +7,5 @@ from .models import Hotel
 class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
-        fields = ['id', 'hotel_name', 'hotel_link', 'user_id']
+        fields = ['id', 'hotel_name', 'hotel_link', 'hotel_cost', 'user_id']
         depth = 1
