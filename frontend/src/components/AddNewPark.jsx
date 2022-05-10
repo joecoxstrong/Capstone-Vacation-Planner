@@ -38,8 +38,8 @@ const AddNewPark = (props) => {
   }
 
   return (
-    <div class="row mb-3">
-      <div class="col-sm-10">
+    <div>
+      <div>
         <form className="form" onSubmit={handleSubmit}>
           <input
             placeholder="Park Name"
