@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-
 import axios from "axios";
 import AddVacationPlan from "../components/AddVacationPlan";
 
@@ -13,42 +12,68 @@ const VacationPlanPage = () => {
   const [vacationPlans, setVacationPlans] = useState([]);
 
   useEffect(() => {
-    const fetchVacationPlans = async () => {
-      try {
-        let response = await axios.get(
-          "http://127.0.0.1:8000/api/vacation_plan/all/",
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setVacationPlans(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchVacationPlans();
-  }, [token]);
+  }, []);
+  async function fetchVacationPlans() {
+    let response = await axios.get(
+      "http://127.0.01:8000/api/vacation_plan/all/",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    setVacationPlans(response.data);
+  }
 
-  const fetchVacationPlans = async () => {
-    try {
-      let response = await axios.get(
-        "http://127.0.0.1:8000/api/vacation_plan/all/",
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      setVacationPlans(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  //   const fetchVacationPlans = async () => {
+  //     try {
+  //       let response = await axios.get(
+  //         "http://127.0.0.1:8000/api/vacation_plan/all/",
+  //         {
+  //           headers: {
+  //             Authorization: "Bearer " + token,
+  //           },
+  //         }
+  //       );
+  //       setVacationPlans(response.data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
+  //   fetchVacationPlans();
+  // }, [token]);
+
+  // const fetchVacationPlans = async () => {
+  //   try {
+  //     let response = await axios.get(
+  //       "http://127.0.0.1:8000/api/vacation_plan/all/",
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + token,
+  //         },
+  //       }
+  //     );
+  //     setVacationPlans(response.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   function addVacationPlan() {
     fetchVacationPlans();
+  }
+
+  function deleteVacationPlan(id) {
+    fetch(`http://127.0.01:8000/api/vacation_plan/${id}/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).then(() => {
+      fetchVacationPlans();
+    });
   }
 
   return (
@@ -58,7 +83,43 @@ const VacationPlanPage = () => {
       </h1>
 
       <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+
       <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>Customer Name</td>
+              <td>Hotel</td>
+              <td>Park</td>
+              <td>Addon</td>
+              <td>Travelers</td>
+              <td>Start Date</td>
+              <td>Total Days</td>
+            </tr>
+            {vacationPlans.map((vacationPlan, i) => (
+              <tr key={i}>
+                <td>
+                  {vacationPlan.customer.first_name}{" "}
+                  {vacationPlan.customer.last_name}{" "}
+                </td>
+                <td>{vacationPlan.hotel.hotel_name}</td>
+                <td>{vacationPlan.park.park_name}</td>
+                <td>{vacationPlan.addon.addon_name}</td>
+                <td>{vacationPlan.total_travelers}</td>
+                <td>{vacationPlan.start_date}</td>
+                <td>{vacationPlan.total_days}</td>
+                <td>
+                  <button onClick={() => deleteVacationPlan(vacationPlan.id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* <div>
         {vacationPlans &&
           vacationPlans.map((vacationPlan) => (
             <>
@@ -76,7 +137,7 @@ const VacationPlanPage = () => {
               </li>
             </>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };

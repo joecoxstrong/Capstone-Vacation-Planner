@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-
 import axios from "axios";
 import AddHotel from "../components/AddHotel";
 
@@ -13,35 +12,74 @@ const HotelPage = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
-    const fetchHotels = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/hotel/all/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setHotels(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchHotels();
-  }, [token]);
+  }, []);
+  async function fetchHotels() {
+    let response = await axios.get("http://127.0.01:8000/api/hotel/all/", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    setHotels(response.data);
+  }
+
+  //   const fetchHotels = async () => {
+  //     try {
+  //       let response = await axios.get("http://127.0.0.1:8000/api/hotel/all/", {
+  //         headers: {
+  //           Authorization: "Bearer " + token,
+  //         },
+  //       });
+  //       setHotels(response.data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
+  //   fetchHotels();
+  // }, [token]);
 
   function addNewHotel(hotel) {
     let tempHotels = [hotel, ...hotels];
     setHotels(tempHotels);
   }
+
+  function deleteHotel(id) {
+    fetch(`http://127.0.01:8000/api/hotel/${id}/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).then(() => {
+      fetchHotels();
+    });
+  }
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available hotels!</h1>
       <AddHotel addNewHotelProperty={addNewHotel} />
-      {hotels &&
-        hotels.map((hotel) => (
-          <p key={hotel.id}>
-            {hotel.hotel_name} - ${hotel.hotel_cost} per night
-          </p>
-        ))}
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>Hotel Name</td>
+              <td>Price per night</td>
+            </tr>
+            {hotels &&
+              hotels.map((hotel) => (
+                <tr key={hotel.id}>
+                  <td>{hotel.hotel_name} </td>
+                  <td>${hotel.hotel_cost} </td>
+                  <td>
+                    <button onClick={() => deleteHotel(hotel.id)}>
+                      DELETE
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

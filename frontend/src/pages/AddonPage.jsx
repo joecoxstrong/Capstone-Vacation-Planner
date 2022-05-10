@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-
 import axios from "axios";
 import Addon from "../components/Addon";
 
@@ -13,35 +12,57 @@ const AddonPage = () => {
   const [addons, setAddons] = useState([]);
 
   useEffect(() => {
-    const fetchAddons = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/addon/all/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setAddons(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchAddons();
-  }, [token]);
+  }, []);
+  async function fetchAddons() {
+    let response = await axios.get("http://127.0.01:8000/api/addon/all/", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    setAddons(response.data);
+  }
 
   function addNewAddon(addon) {
     let tempAddons = [addon, ...addons];
     setAddons(tempAddons);
   }
+
+  function deleteAddon(id) {
+    fetch(`http://127.0.01:8000/api/addon/${id}/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).then(() => {
+      fetchAddons();
+    });
+  }
+
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available addons!</h1>
       <Addon addNewAddonProperty={addNewAddon} />
-      {addons &&
-        addons.map((addon) => (
-          <p key={addon.id}>
-            {addon.addon_name} - ${addon.addon_price}
-          </p>
-        ))}
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>Addon Name</td>
+              <td>Price</td>
+            </tr>
+            {addons.map((addon, i) => (
+              <tr key={i}>
+                <td>{addon.addon_name}</td>
+                <td>${addon.addon_cost}</td>
+                <td>
+                  <button onClick={() => deleteAddon(addon.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

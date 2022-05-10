@@ -23,7 +23,6 @@ const ParksPage = () => {
       headers: {
         Authorization: "Bearer " + token,
       },
-      body: JSON.stringify(addNewPark),
     });
     setParks(response.data);
   }
@@ -40,7 +39,6 @@ const ParksPage = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-      body: JSON.stringify(addNewPark),
     }).then(() => {
       fetchParks();
     });
