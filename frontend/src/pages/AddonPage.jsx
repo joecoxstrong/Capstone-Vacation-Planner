@@ -39,7 +39,7 @@ const AddonPage = () => {
       {addons &&
         addons.map((addon) => (
           <p key={addon.id}>
-            {addon.addon_name} ${addon.addon_price}
+            {addon.addon_name} - ${addon.addon_price}
           </p>
         ))}
     </div>

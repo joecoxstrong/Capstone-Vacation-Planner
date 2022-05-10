@@ -39,7 +39,7 @@ const HotelPage = () => {
       {hotels &&
         hotels.map((hotel) => (
           <p key={hotel.id}>
-            {hotel.hotel_name} {hotel.hotel_link}
+            {hotel.hotel_name} - ${hotel.hotel_cost} per night
           </p>
         ))}
     </div>

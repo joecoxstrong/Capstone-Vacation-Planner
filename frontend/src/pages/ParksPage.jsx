@@ -39,7 +39,7 @@ const ParksPage = () => {
       {parks &&
         parks.map((park) => (
           <p key={park.id}>
-            {park.park_name} ${park.park_cost}
+            {park.park_name} - ${park.park_cost}
           </p>
         ))}
     </div>

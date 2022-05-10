@@ -7,12 +7,14 @@ const AddVacationPlan = (props) => {
   const [customer_id, setCustomer_Id] = useState();
   const [hotel_id, setHotel_Id] = useState();
   const [park_id, setPark_Id] = useState();
+  const [addon_id, setAddon_Id] = useState();
   const [total_travelers, setTotal_Travelers] = useState("");
   const [start_date, setStart_Date] = useState("");
   const [total_days, setTotal_Days] = useState("");
   const [hotels, setHotels] = useState("");
   const [parks, setParks] = useState("");
   const [customers, setCustomers] = useState("");
+  const [addons, setAddons] = useState("");
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -65,12 +67,29 @@ const AddVacationPlan = (props) => {
     fetchHotels();
   }, [token]);
 
+  useEffect(() => {
+    const fetchAddons = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/addon/all/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setAddons(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchAddons();
+  }, [token]);
+
   function handleSubmit(event) {
     event.preventDefault();
     const addNewVacationPlan = {
       customer_id,
       hotel_id,
       park_id,
+      addon_id,
       total_travelers,
       start_date,
       total_days,
@@ -143,6 +162,19 @@ const AddVacationPlan = (props) => {
                   value={park.id}
                 >
                   {park.park_name}
+                </option>
+              ))}
+          </select>
+          <select onClick={(event) => setAddon_Id(event.target.value)}>
+            {addons &&
+              addons.map((addon) => (
+                <option
+                  key={addon.id}
+                  type="number"
+                  name="addon_id"
+                  value={addon.id}
+                >
+                  {addon.addon_name}
                 </option>
               ))}
           </select>
