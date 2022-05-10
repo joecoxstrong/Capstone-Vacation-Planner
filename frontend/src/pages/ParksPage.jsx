@@ -10,10 +10,10 @@ const ParksPage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [parks, setParks] = useState([]);
-  const [park_name, setPark_Name] = useState();
-  const [park_link, setPark_Link] = useState();
-  const [park_cost, setPark_Cost] = useState();
-  const [park_id, setPark_Id] = useState();
+  const [park_name, setPark_Name] = useState("");
+  const [park_link, setPark_Link] = useState("");
+  const [park_cost, setPark_Cost] = useState("");
+  const [park_id, setPark_Id] = useState("");
 
   useEffect(() => {
     fetchParks();
@@ -32,7 +32,7 @@ const ParksPage = () => {
     setParks(tempParks);
   }
 
-  function deletePark(id) {
+  async function deletePark(id) {
     fetch(`http://127.0.01:8000/api/park/${id}/`, {
       method: "DELETE",
       headers: {
@@ -44,8 +44,10 @@ const ParksPage = () => {
     });
   }
 
-  function selectPark(id) {
-    let item = parks[id - 1];
+  function selectPark(i) {
+    let item = parks[i];
+    console.log(item);
+    console.log(parks);
     setPark_Name(item.park_name);
     setPark_Link(item.park_link);
     setPark_Cost(item.park_cost);
@@ -88,7 +90,7 @@ const ParksPage = () => {
                   <button onClick={() => deletePark(park.id)}>Delete</button>
                 </td>
                 <td>
-                  <button onClick={() => selectPark(park.id)}>Update</button>
+                  <button onClick={() => selectPark(i)}>Update</button>
                 </td>
               </tr>
             ))}
