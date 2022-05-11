@@ -74,7 +74,7 @@ const AddonPage = () => {
       <h1>{user.first_name}, here is a list of available addons!</h1>
       <Addon addNewAddonProperty={addNewAddon} />
       <div>
-        <table>
+        <table cellPadding={5} cellSpacing={5}>
           <tbody>
             <tr>
               <td>Addon Name</td>

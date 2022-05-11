@@ -73,7 +73,7 @@ const HotelPage = () => {
       <h1>{user.first_name}, here is a list of available hotels!</h1>
       <AddHotel addNewHotelProperty={addNewHotel} />
       <div>
-        <table>
+        <table cellPadding={5} cellSpacing={5}>
           <tbody>
             <tr>
               <td>Hotel Name</td>
@@ -88,9 +88,9 @@ const HotelPage = () => {
                     <button onClick={() => deleteHotel(hotel.id)}>
                       DELETE
                     </button>
-                    <td>
-                      <button onClick={() => selectHotel(i)}>Update</button>
-                    </td>
+                  </td>
+                  <td>
+                    <button onClick={() => selectHotel(i)}>Update</button>
                   </td>
                 </tr>
               ))}

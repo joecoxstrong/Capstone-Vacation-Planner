@@ -94,7 +94,7 @@ const CustomerPage = () => {
       <h1>{user.first_name}, here is a list of your customers!</h1>
       <AddCustomer addNewCostomerProperty={addNewCustomer} />
       <div>
-        <table>
+        <table cellPadding={5} cellSpacing={5}>
           <tbody>
             <tr>
               <td>Customer Name</td>
@@ -120,9 +120,9 @@ const CustomerPage = () => {
                   <button onClick={() => deleteCustomer(customer.id)}>
                     Delete
                   </button>
-                  <td>
-                    <button onClick={() => selectCustomer(i)}>Update</button>
-                  </td>
+                </td>
+                <td>
+                  <button onClick={() => selectCustomer(i)}>Update</button>
                 </td>
               </tr>
             ))}

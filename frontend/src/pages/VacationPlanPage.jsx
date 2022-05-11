@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import AddVacationPlan from "../components/AddVacationPlan";
+import SearchBar from "../components/SearchBar";
 
-const VacationPlanPage = () => {
+const VacationPlanPage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
@@ -26,40 +27,6 @@ const VacationPlanPage = () => {
     setVacationPlans(response.data);
   }
 
-  //   const fetchVacationPlans = async () => {
-  //     try {
-  //       let response = await axios.get(
-  //         "http://127.0.0.1:8000/api/vacation_plan/all/",
-  //         {
-  //           headers: {
-  //             Authorization: "Bearer " + token,
-  //           },
-  //         }
-  //       );
-  //       setVacationPlans(response.data);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   fetchVacationPlans();
-  // }, [token]);
-
-  // const fetchVacationPlans = async () => {
-  //   try {
-  //     let response = await axios.get(
-  //       "http://127.0.0.1:8000/api/vacation_plan/all/",
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       }
-  //     );
-  //     setVacationPlans(response.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
   function addVacationPlan() {
     fetchVacationPlans();
   }
@@ -78,14 +45,19 @@ const VacationPlanPage = () => {
 
   return (
     <div className="container">
-      <h1>
-        {user.first_name}, here is a list of vacation plans for your customers!
-      </h1>
+      <div>
+        <h1>
+          {user.first_name}, here is a list of vacation plans for your
+          customers!
+        </h1>
+      </div>
 
-      <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+      <div className="container">
+        <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+      </div>
 
       <div>
-        <table>
+        <table cellPadding={5} cellSpacing={5}>
           <tbody>
             <tr>
               <td>Customer Name</td>

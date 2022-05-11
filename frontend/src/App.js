@@ -21,6 +21,9 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+  
+
+
 
   
   return (

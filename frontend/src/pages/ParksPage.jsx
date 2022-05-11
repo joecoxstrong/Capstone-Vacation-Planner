@@ -54,7 +54,8 @@ const ParksPage = () => {
     setPark_Id(item.id);
   }
 
-  function updatePark() {
+  function updatePark(e) {
+    e.preventDefault();
     let item = { park_name, park_link, park_cost };
     console.warn("item", item);
     fetch(`http://127.0.01:8000/api/park/${park_id}/`, {
@@ -67,6 +68,9 @@ const ParksPage = () => {
     }).then(() => {
       fetchParks();
     });
+    setPark_Name("");
+    setPark_Link("");
+    setPark_Cost("");
   }
 
   return (
@@ -74,7 +78,7 @@ const ParksPage = () => {
       <h1>{user.first_name}, here is a list of available parks!</h1>
       <AddNewPark addNewParkProperty={addNewPark} />
       <div>
-        <table>
+        <table cellPadding={5} cellSpacing={5}>
           <tbody>
             <tr>
               <td>Park ID</td>
@@ -100,6 +104,7 @@ const ParksPage = () => {
           <input
             type="text"
             value={park_name}
+            placeholder="Park Name"
             onChange={(e) => {
               setPark_Name(e.target.value);
             }}
@@ -109,6 +114,7 @@ const ParksPage = () => {
           <input
             type="text"
             value={park_link}
+            placeholder="Link"
             onChange={(e) => {
               setPark_Link(e.target.value);
             }}
@@ -118,6 +124,7 @@ const ParksPage = () => {
           <input
             type="text"
             value={park_cost}
+            placeholder="Cost"
             onChange={(e) => {
               setPark_Cost(e.target.value);
             }}
