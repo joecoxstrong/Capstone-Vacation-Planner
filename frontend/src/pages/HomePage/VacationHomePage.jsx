@@ -31,7 +31,7 @@ const VacationHomePage = () => {
     fetchCustomers();
   }, [token]);
   return (
-    <div className="container">
+    <div className="welcome">
       <h1>Welcome {user.first_name}!</h1>
       <div>
         <h2>Here is a tool that you</h2>

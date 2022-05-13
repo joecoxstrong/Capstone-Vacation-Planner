@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import AddVacationPlan from "../components/AddVacationPlan";
 import SearchBar from "../components/SearchBar";
+import { Link } from "react-router-dom";
 
 const VacationPlanPage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -52,14 +53,18 @@ const VacationPlanPage = (props) => {
         </h1>
       </div>
 
-      <div className="container">
-        <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+      <div className="grid-container">
+        <div className="item3">
+          <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+        </div>
+        <div className="item2"></div>
+        <div className="item4"></div>
       </div>
 
       <div>
-        <table cellPadding={5} cellSpacing={5}>
+        <table cellPadding={5} cellSpacing={5} className="table-center">
           <tbody>
-            <tr>
+            <tr className="table-container">
               <td>Customer Name</td>
               <td>Hotel</td>
               <td>Park</td>
@@ -69,7 +74,7 @@ const VacationPlanPage = (props) => {
               <td>Total Days</td>
             </tr>
             {vacationPlans.map((vacationPlan, i) => (
-              <tr key={i}>
+              <tr key={i} className="table-container">
                 <td>
                   {vacationPlan.customer.first_name}{" "}
                   {vacationPlan.customer.last_name}{" "}
@@ -84,32 +89,16 @@ const VacationPlanPage = (props) => {
                   <button onClick={() => deleteVacationPlan(vacationPlan.id)}>
                     Delete
                   </button>
+                  <a href="http://127.0.0.1:8000/api/vacation_plan/pdf/">PDF</a>
+                  {/* <Link to="/single_vacation_plan/">
+                    <button>Select</button>
+                  </Link> */}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      {/* <div>
-        {vacationPlans &&
-          vacationPlans.map((vacationPlan) => (
-            <>
-              <li key={vacationPlan.id}>
-                {vacationPlan.customer.first_name}{" "}
-                {vacationPlan.customer.last_name}{" "}
-                {vacationPlan.hotel.hotel_name} {vacationPlan.park.park_name}{" "}
-                {vacationPlan.total_travelers}
-                {" Travelers"} {vacationPlan.start_date}
-                {" Begin Date"}
-                {vacationPlan.total_days}
-                {" Days"}
-                <button>Update</button>
-                <button>PDF</button>
-              </li>
-            </>
-          ))}
-      </div> */}
     </div>
   );
 };

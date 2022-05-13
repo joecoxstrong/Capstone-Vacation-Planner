@@ -20,7 +20,7 @@ const Navbar = () => {
             to="/customer/"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <b>Customer</b>
+            <b>Customers</b>
           </Link>
         </li>
         <li className="brand">

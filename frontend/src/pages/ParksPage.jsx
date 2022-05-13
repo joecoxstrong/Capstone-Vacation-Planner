@@ -76,19 +76,54 @@ const ParksPage = () => {
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available parks!</h1>
-      <AddNewPark addNewParkProperty={addNewPark} />
+      <div className="grid-container">
+        <div className="item2">
+          <AddNewPark addNewParkProperty={addNewPark} />
+        </div>
+        <div className="item3"></div>
+        <div className="item4">
+          <div className="form">
+            <input
+              type="text"
+              value={park_name}
+              placeholder="Park Name"
+              onChange={(e) => {
+                setPark_Name(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              value={park_link}
+              placeholder="Link"
+              onChange={(e) => {
+                setPark_Link(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              value={park_cost}
+              placeholder="Cost"
+              onChange={(e) => {
+                setPark_Cost(e.target.value);
+              }}
+            />
+            <button onClick={updatePark}>Update Park</button>
+          </div>
+        </div>
+      </div>
+
       <div>
-        <table cellPadding={5} cellSpacing={5}>
+        <table cellPadding={5} cellSpacing={5} className="table-center">
           <tbody>
-            <tr>
-              <td>Park ID</td>
+            <tr className="table-container">
               <td>Park Name</td>
+              <td>Link</td>
               <td>Price</td>
             </tr>
             {parks.map((park, i) => (
-              <tr key={i}>
-                <td>{park.id}</td>
+              <tr key={i} className="table-container">
                 <td>{park.park_name}</td>
+                <td>{park.park_link}</td>
                 <td>${park.park_cost}</td>
                 <td>
                   <button onClick={() => deletePark(park.id)}>Delete</button>
@@ -100,39 +135,6 @@ const ParksPage = () => {
             ))}
           </tbody>
         </table>
-        <div>
-          <input
-            type="text"
-            value={park_name}
-            placeholder="Park Name"
-            onChange={(e) => {
-              setPark_Name(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={park_link}
-            placeholder="Link"
-            onChange={(e) => {
-              setPark_Link(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={park_cost}
-            placeholder="Cost"
-            onChange={(e) => {
-              setPark_Cost(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <button onClick={updatePark}>Update Park</button>
-        </div>
       </div>
     </div>
   );

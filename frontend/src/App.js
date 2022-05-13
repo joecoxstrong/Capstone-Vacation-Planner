@@ -1,7 +1,9 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import useAuth from "./hooks/useAuth";
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -12,6 +14,7 @@ import HotelPage from "./pages/HotelPage";
 import ParksPage from "./pages/ParksPage";
 import VacationPlanPage from "./pages/VacationPlanPage";
 import AddonPage from "./pages/AddonPage";
+import SingleVacationPage from "./pages/SingleVacationPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -78,10 +81,17 @@ function App() {
               <VacationPlanPage  />
             </PrivateRoute>
           }/>
+          <Route
+          path="/single_vacation_plan/"
+          element={
+            <PrivateRoute>
+              <SingleVacationPage />
+            </PrivateRoute>
+          }/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-      <Footer />
+      <Footer className="top-space"/>
 
       </div>
       

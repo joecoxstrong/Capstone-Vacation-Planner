@@ -30,15 +30,16 @@ const Addon = (props) => {
       addon_description: addon_description,
       addon_price: addon_price,
     };
-    // setHotel_Name("");
-    // setHotel_Link("");
+    setAddon_Name("");
+    setAddon_Description("");
+    setAddon_Price("");
 
     props.addNewAddonProperty(newAddon);
   }
 
   return (
-    <div class="row mb-3">
-      <div class="col-sm-10">
+    <div>
+      <div>
         <form className="form" onSubmit={handleSubmit}>
           <input
             placeholder="Addon Name"

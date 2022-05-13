@@ -23,7 +23,7 @@ from reportlab.lib.pagesizes import letter
 # Create your views here.
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def vacation_plan_list(request):
     if request.method =='POST':
         serializer = Vacation_PlanSerializer(data=request.data)
@@ -64,32 +64,28 @@ def vacation_pdf(request):
     text_object= p.beginText()
     text_object.setTextOrigin(inch, inch)
     text_object.setFont('Helvetica', 14)
-
-# add some text for testing
-    # lines = [
-    #     "This is line 1",
-    #     "This is line 2",
-    #     "This is line 3",
-    # ]
+    
     vacation_plans=Vacation_Plan.objects.all()
-
     lines = []
 
     for vacation_plan in vacation_plans:
         lines.append(vacation_plan.customer.first_name)
         lines.append(vacation_plan.hotel.hotel_name)
+        lines.append(str(vacation_plan.hotel.hotel_cost))
         lines.append(vacation_plan.park.park_name)
+        lines.append(str(vacation_plan.park.park_cost))
         lines.append(vacation_plan.addon.addon_name)
+        lines.append(str(vacation_plan.addon.addon_price))
         lines.append(str(vacation_plan.total_travelers))
         lines.append(str(vacation_plan.start_date))
         lines.append(str(vacation_plan.total_days))
-        lines.append(" ")
+        lines.append("_______________________________________________________________ ")
 
     for line in lines: 
         text_object.textLine(line)
 
     p.drawText(text_object)    
-
+    
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
     # p.drawString(100, 700, "Hello world.")

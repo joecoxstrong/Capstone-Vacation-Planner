@@ -66,23 +66,63 @@ const HotelPage = () => {
     }).then(() => {
       fetchHotels();
     });
+    setHotel_Name("");
+    setHotel_Link("");
+    setHotel_Cost("");
   }
 
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available hotels!</h1>
-      <AddHotel addNewHotelProperty={addNewHotel} />
+      <div className="grid-container">
+        <div className="item2">
+          <AddHotel addNewHotelProperty={addNewHotel} />
+        </div>
+        <div className="item3"></div>
+        <div className="item4">
+          <div className="form">
+            <input
+              type="text"
+              placeholder="Hotel"
+              value={hotel_name}
+              onChange={(e) => {
+                setHotel_Name(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Link to hotel website"
+              value={hotel_link}
+              onChange={(e) => {
+                setHotel_Link(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Price per night"
+              value={hotel_cost}
+              onChange={(e) => {
+                setHotel_Cost(e.target.value);
+              }}
+            />
+            <button onClick={updateHotel}>Update Hotel</button>
+          </div>
+        </div>
+      </div>
+
       <div>
-        <table cellPadding={5} cellSpacing={5}>
+        <table cellPadding={5} cellSpacing={5} className="table-center">
           <tbody>
-            <tr>
+            <tr className="table-container">
               <td>Hotel Name</td>
+              <td>Link</td>
               <td>Price per night</td>
             </tr>
             {hotels &&
               hotels.map((hotel, i) => (
-                <tr key={i}>
+                <tr key={i} className="table-container">
                   <td>{hotel.hotel_name} </td>
+                  <td>{hotel.hotel_link} </td>
                   <td>${hotel.hotel_cost} </td>
                   <td>
                     <button onClick={() => deleteHotel(hotel.id)}>
@@ -96,36 +136,6 @@ const HotelPage = () => {
               ))}
           </tbody>
         </table>
-        <div>
-          <input
-            type="text"
-            value={hotel_name}
-            onChange={(e) => {
-              setHotel_Name(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={hotel_link}
-            onChange={(e) => {
-              setHotel_Link(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={hotel_cost}
-            onChange={(e) => {
-              setHotel_Cost(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <button onClick={updateHotel}>Update Hotel</button>
-        </div>
       </div>
     </div>
   );

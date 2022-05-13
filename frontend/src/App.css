@@ -36,43 +36,63 @@ button:hover {
 .container {
   position: relative;
   margin: 0 auto;
-  
+
   overflow: auto;
-  text-align: center;
+  text-align: left;
   color: black;
+  
+}
+.table-container {
+ position:relative;
+  background-color: white;
+  text-indent: 3px;
+  outline: auto;
+  overflow: auto;
+  text-align: left;
+  color: black;
+  
+  
+  
+}
+.table-center{
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
 .form {
-  align-items: center;
+  width: 100%;
+  align-items: left;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: 2px;
+  padding-left: 2rem;
+  
+}
+.update-form {
+  width: 25%;
+  align-items: right;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: flex-end;
+  /* gap: 1rem; */
+  padding-left: 2rem;
+  
 }
 
-.form input {
-  display: block;
-  width: 100%;
-  height: 25px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
+h1{
+  padding-bottom: 2rem;
+}
+
+.bottom-space {
+  padding-bottom: 5rem;
+}
+.top-space{
+  padding-top: 5rem;
 }
 
 
-/* .background{
-  
-  background-image: url("https://i.pinimg.com/1200x/89/10/14/891014b8cad4c34a4bd28e4dec91356d.jpg");
-  
-  background-repeat: no-repeat;
-  background-position: top center ;
-  opacity: .6;
-  
- padding-top: 100px;
- padding-bottom: 300px;
-  
-} */
 
 .hero {
   position: relative; 
@@ -82,6 +102,7 @@ button:hover {
   align-items: top;
   justify-content: center;
   padding-top: 10vh;
+  
 }
 
 .hero::before {    
@@ -90,18 +111,13 @@ button:hover {
     background-size:contain;
     background-repeat: no-repeat;
     position: absolute;
+    margin-left: auto;
+    margin-right: auto;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.5;
-
-    /* background-repeat: no-repeat;
-    background-position: top center ; */
-    opacity: .6;
-  
-    /* padding-top: 100px;
-    padding-bottom: 300px; */
+    opacity: .5;
 }
 
 h1 {
@@ -109,5 +125,37 @@ position: relative;
 color:black;  
 font-size: 4rem;
 line-height: 0.9;
+text-align: center;
+}
+
+
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu menu main main right right'
+    'menu menu main main right right'
+    'menu menu main main right right';
+  gap: 10px;
+ 
+  padding: 10px;
+}
+
+.grid-container > div {
+  
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+h2{
+  position: relative;
+color:black;  
+font-size: 2rem;
+line-height: 2;
 text-align: center;
 }

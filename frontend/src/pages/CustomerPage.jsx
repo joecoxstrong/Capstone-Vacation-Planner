@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import AddCustomer from "../components/AddCustomer";
 import axios from "axios";
+import UpdateCustomer from "../components/UpdateCustomer";
 
-const CustomerPage = () => {
+const CustomerPage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
@@ -87,123 +88,132 @@ const CustomerPage = () => {
     }).then(() => {
       fetchCustomers();
     });
+    setFirst_Name("");
+    setLast_Name("");
+    setEmail("");
+    setPhone_Number("");
+    setStreet("");
+    setCity("");
+    setState("");
+    setZipcode("");
   }
 
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of your customers!</h1>
-      <AddCustomer addNewCostomerProperty={addNewCustomer} />
-      <div>
-        <table cellPadding={5} cellSpacing={5}>
-          <tbody>
-            <tr>
-              <td>Customer Name</td>
-              <td>Email</td>
-              <td>Phone Number</td>
-              <td>Street</td>
-              <td>City</td>
-              <td>State</td>
-              <td>Zipcode</td>
-            </tr>
-            {customers.map((customer, i) => (
-              <tr key={i}>
-                <td>
-                  {customer.first_name} {customer.last_name}{" "}
-                </td>
-                <td>{customer.email}</td>
-                <td>{customer.phone_number}</td>
-                <td>{customer.street}</td>
-                <td>{customer.city}</td>
-                <td>{customer.state}</td>
-                <td>{customer.zipcode}</td>
-                <td>
-                  <button onClick={() => deleteCustomer(customer.id)}>
-                    Delete
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => selectCustomer(i)}>Update</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div>
-          <input
-            type="text"
-            value={first_name}
-            onChange={(e) => {
-              setFirst_Name(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={last_name}
-            onChange={(e) => {
-              setLast_Name(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={phone_number}
-            onChange={(e) => {
-              setPhone_Number(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={street}
-            onChange={(e) => {
-              setStreet(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => {
-              setCity(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={state}
-            onChange={(e) => {
-              setState(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={zipcode}
-            onChange={(e) => {
-              setZipcode(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <button onClick={updateCustomer}>Update customer</button>
+      <div className="grid-container">
+        <div className="item2">
+          <AddCustomer addNewCostomerProperty={addNewCustomer} />
+        </div>
+        <div className="item3"> </div>
+        <div className="item4">
+          <div className="form">
+            <input
+              type="text"
+              placeholder="First Name"
+              value={first_name}
+              onChange={(e) => {
+                setFirst_Name(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={last_name}
+              onChange={(e) => {
+                setLast_Name(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              value={phone_number}
+              onChange={(e) => {
+                setPhone_Number(e.target.value);
+              }}
+            />
+
+            <input
+              type="text"
+              placeholder="Street"
+              value={street}
+              onChange={(e) => {
+                setStreet(e.target.value);
+              }}
+            />
+
+            <input
+              type="text"
+              placeholder="City"
+              value={city}
+              onChange={(e) => {
+                setCity(e.target.value);
+              }}
+            />
+
+            <input
+              type="text"
+              placeholder="City"
+              value={state}
+              onChange={(e) => {
+                setState(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Zipcode"
+              value={zipcode}
+              onChange={(e) => {
+                setZipcode(e.target.value);
+              }}
+            />
+            <button onClick={updateCustomer}>Update customer</button>
+          </div>
         </div>
       </div>
+
+      <table cellPadding={5} cellSpacing={5} className="table-center">
+        <tbody>
+          <tr className="table-container">
+            <td>Customer Name</td>
+            <td>Email</td>
+            <td>Phone Number</td>
+            <td>Street</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zipcode</td>
+          </tr>
+          {customers.map((customer, i) => (
+            <tr key={i} className="table-container">
+              <td>
+                {customer.first_name} {customer.last_name}{" "}
+              </td>
+              <td>{customer.email}</td>
+              <td>{customer.phone_number}</td>
+              <td>{customer.street}</td>
+              <td>{customer.city}</td>
+              <td>{customer.state}</td>
+              <td>{customer.zipcode}</td>
+              <td>
+                <button onClick={() => deleteCustomer(customer.id)}>
+                  Delete
+                </button>
+              </td>
+              <td>
+                <button onClick={() => selectCustomer(i)}>Update</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

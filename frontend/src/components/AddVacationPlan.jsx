@@ -106,20 +106,6 @@ const AddVacationPlan = (props) => {
       console.log({ addNewVacationPlan });
       props.addNewVacationPlanProperty();
     });
-    // let newVacationPlan = {
-    //   customers: customers,
-    //   hotels: hotels,
-    //   parks: parks,
-    //   total_travelers: total_travelers,
-    //   start_date: start_date,
-    //   total_days: total_days,
-    // };
-    // setCustomer_Id();
-    // setHotel_Id();
-    // setPark_Id();
-    // setTotal_Travelers("");
-    // setStart_Date("");
-    // setTotal_Days("");
   }
 
   return (

@@ -82,7 +82,7 @@ const AddCustomer = (props) => {
         ></input>
         <input
           placeholder="Phone Number"
-          type="number"
+          type="phone number"
           name="phone_number"
           value={phone_number}
           onChange={(event) => setPhone_Number(event.target.value)}

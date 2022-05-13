@@ -67,22 +67,62 @@ const AddonPage = () => {
     }).then(() => {
       fetchAddons();
     });
+    setAddon_Name("");
+    setAddon_Description("");
+    setAddon_Price("");
   }
 
   return (
     <div className="container">
       <h1>{user.first_name}, here is a list of available addons!</h1>
-      <Addon addNewAddonProperty={addNewAddon} />
+      <div className="grid-container">
+        <div className="item2">
+          <Addon addNewAddonProperty={addNewAddon} />
+        </div>
+        <div className="item3"></div>
+        <div className="item4">
+          <div className="form">
+            <input
+              type="text"
+              placeholder="Addon"
+              value={addon_name}
+              onChange={(e) => {
+                setAddon_Name(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Description"
+              value={addon_description}
+              onChange={(e) => {
+                setAddon_Description(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Price"
+              value={addon_price}
+              onChange={(e) => {
+                setAddon_Price(e.target.value);
+              }}
+            />
+            <button onClick={updateAddon}>Update Addon</button>
+          </div>
+        </div>
+      </div>
+
       <div>
-        <table cellPadding={5} cellSpacing={5}>
+        <table cellPadding={5} cellSpacing={5} className="table-center">
           <tbody>
-            <tr>
-              <td>Addon Name</td>
+            <tr className="table-container">
+              <td>Addon</td>
+              <td>Description</td>
               <td>Price</td>
             </tr>
             {addons.map((addon, i) => (
-              <tr key={i}>
+              <tr key={i} className="table-container">
                 <td>{addon.addon_name}</td>
+                <td>{addon.addon_description}</td>
                 <td>${addon.addon_price}</td>
                 <td>
                   <button onClick={() => deleteAddon(addon.id)}>Delete</button>
@@ -94,36 +134,6 @@ const AddonPage = () => {
             ))}
           </tbody>
         </table>
-        <div>
-          <input
-            type="text"
-            value={addon_name}
-            onChange={(e) => {
-              setAddon_Name(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={addon_description}
-            onChange={(e) => {
-              setAddon_Description(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            value={addon_price}
-            onChange={(e) => {
-              setAddon_Price(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <br />
-          <button onClick={updateAddon}>Update Addon</button>
-        </div>
       </div>
     </div>
   );

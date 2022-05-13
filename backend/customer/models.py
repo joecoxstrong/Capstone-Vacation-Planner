@@ -10,7 +10,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     email = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=17)
     street = models.CharField(max_length=255, default=None)
     city = models.CharField(max_length=255, default=None)
     state = models.CharField(max_length=255, default=None)

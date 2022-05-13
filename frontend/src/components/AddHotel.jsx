@@ -38,8 +38,8 @@ const AddHotel = (props) => {
   }
 
   return (
-    <div class="row mb-3">
-      <div class="col-sm-10">
+    <div>
+      <div>
         <form className="form" onSubmit={handleSubmit}>
           <input
             placeholder="Hotel Name"
@@ -56,7 +56,7 @@ const AddHotel = (props) => {
             onChange={(event) => setHotel_Link(event.target.value)}
           ></input>
           <input
-            placeholder="Hotel price"
+            placeholder="Price per night"
             type="number"
             name="hotel_cost"
             value={hotel_cost}
