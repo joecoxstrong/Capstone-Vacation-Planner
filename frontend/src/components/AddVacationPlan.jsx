@@ -187,7 +187,7 @@ const AddVacationPlan = (props) => {
             onChange={(event) => setTotal_Days(event.target.value)}
           ></input>
 
-          <button type="submit">CREATE PLAN</button>
+          <button>Add</button>
         </form>
       </div>
     </div>

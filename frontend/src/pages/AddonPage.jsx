@@ -73,62 +73,82 @@ const AddonPage = () => {
   }
 
   return (
-    <div className="container">
+    <div>
       <h1>{user.first_name}, here is a list of available addons!</h1>
       <div className="grid-container">
         <div className="item2">
-          <Addon addNewAddonProperty={addNewAddon} />
+          <div className="container">
+            <div className="border">
+              <Addon addNewAddonProperty={addNewAddon} />
+            </div>
+          </div>
         </div>
         <div className="item3"></div>
         <div className="item4">
-          <div className="form">
-            <input
-              type="text"
-              placeholder="Addon"
-              value={addon_name}
-              onChange={(e) => {
-                setAddon_Name(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              value={addon_description}
-              onChange={(e) => {
-                setAddon_Description(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Price"
-              value={addon_price}
-              onChange={(e) => {
-                setAddon_Price(e.target.value);
-              }}
-            />
-            <button onClick={updateAddon}>Update Addon</button>
+          <div className="container">
+            <div className="border">
+              <div className="form">
+                <input
+                  type="text"
+                  placeholder="Addon"
+                  value={addon_name}
+                  onChange={(e) => {
+                    setAddon_Name(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  value={addon_description}
+                  onChange={(e) => {
+                    setAddon_Description(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Price"
+                  value={addon_price}
+                  onChange={(e) => {
+                    setAddon_Price(e.target.value);
+                  }}
+                />
+                <button onClick={updateAddon}>Update</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div>
-        <table cellPadding={5} cellSpacing={5} className="table-center">
+        <table cellPadding={5} cellSpacing={5} className="container">
           <tbody>
-            <tr className="table-container">
+            <tr>
               <td>Addon</td>
               <td>Description</td>
               <td>Price</td>
             </tr>
             {addons.map((addon, i) => (
-              <tr key={i} className="table-container">
+              <tr key={i}>
                 <td>{addon.addon_name}</td>
                 <td>{addon.addon_description}</td>
                 <td>${addon.addon_price}</td>
-                <td>
+                {/* <td>
                   <button onClick={() => deleteAddon(addon.id)}>Delete</button>
-                </td>
+                </td> */}
                 <td>
                   <button onClick={() => selectAddon(i)}>Update</button>
+                </td>
+                <td>
+                  {/* <button onClick={() => deleteCustomer(customer.id)}>
+                    Delete
+                  </button> */}
+                  <a
+                    href="#"
+                    className="myButton"
+                    onClick={() => deleteAddon(addon.id)}
+                  >
+                    Delete
+                  </a>
                 </td>
               </tr>
             ))}

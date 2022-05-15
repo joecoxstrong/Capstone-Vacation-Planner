@@ -18,6 +18,7 @@ const RegisterPage = () => {
 
   return (
     <div className="container">
+    <div className="border">
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
@@ -70,6 +71,7 @@ const RegisterPage = () => {
         </p>
         <button>Register!</button>
       </form>
+    </div>
     </div>
   );
 };

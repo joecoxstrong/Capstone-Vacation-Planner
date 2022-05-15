@@ -63,7 +63,7 @@ const AddNewPark = (props) => {
             onChange={(event) => setPark_Cost(event.target.value)}
           ></input>
 
-          <button type="submit">ADD PARK</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     </div>

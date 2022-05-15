@@ -72,65 +72,78 @@ const HotelPage = () => {
   }
 
   return (
-    <div className="container">
+    <div>
       <h1>{user.first_name}, here is a list of available hotels!</h1>
       <div className="grid-container">
         <div className="item2">
-          <AddHotel addNewHotelProperty={addNewHotel} />
+          <div className="container">
+            <div className="border">
+              <AddHotel addNewHotelProperty={addNewHotel} />
+            </div>
+          </div>
         </div>
         <div className="item3"></div>
         <div className="item4">
-          <div className="form">
-            <input
-              type="text"
-              placeholder="Hotel"
-              value={hotel_name}
-              onChange={(e) => {
-                setHotel_Name(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Link to hotel website"
-              value={hotel_link}
-              onChange={(e) => {
-                setHotel_Link(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Price per night"
-              value={hotel_cost}
-              onChange={(e) => {
-                setHotel_Cost(e.target.value);
-              }}
-            />
-            <button onClick={updateHotel}>Update Hotel</button>
+          <div className="container">
+            <div className="border">
+              <div className="form">
+                <input
+                  type="text"
+                  placeholder="Hotel"
+                  value={hotel_name}
+                  onChange={(e) => {
+                    setHotel_Name(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Link to hotel website"
+                  value={hotel_link}
+                  onChange={(e) => {
+                    setHotel_Link(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Price per night"
+                  value={hotel_cost}
+                  onChange={(e) => {
+                    setHotel_Cost(e.target.value);
+                  }}
+                />
+                <button onClick={updateHotel}>Update</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div>
-        <table cellPadding={5} cellSpacing={5} className="table-center">
+        <table cellPadding={5} cellSpacing={5} className="container">
           <tbody>
-            <tr className="table-container">
+            <tr>
               <td>Hotel Name</td>
-              <td>Link</td>
+
               <td>Price per night</td>
             </tr>
             {hotels &&
               hotels.map((hotel, i) => (
-                <tr key={i} className="table-container">
-                  <td>{hotel.hotel_name} </td>
-                  <td>{hotel.hotel_link} </td>
+                <tr key={i}>
+                  <td>
+                    <a href={hotel.hotel_link}>{hotel.hotel_name}</a>{" "}
+                  </td>
                   <td>${hotel.hotel_cost} </td>
                   <td>
-                    <button onClick={() => deleteHotel(hotel.id)}>
-                      DELETE
-                    </button>
+                    <button onClick={() => selectHotel(i)}>Edit</button>
                   </td>
                   <td>
-                    <button onClick={() => selectHotel(i)}>Update</button>
+                    <a
+                      href="#"
+                      className="myButton"
+                      onClick={() => deleteHotel(hotel.id)}
+                    >
+                      Delete
+                    </a>
                   </td>
                 </tr>
               ))}

@@ -63,7 +63,7 @@ const AddHotel = (props) => {
             onChange={(event) => setHotel_Cost(event.target.value)}
           ></input>
 
-          <button type="submit">ADD HOTEL</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     </div>

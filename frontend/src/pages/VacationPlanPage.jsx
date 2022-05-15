@@ -45,7 +45,7 @@ const VacationPlanPage = (props) => {
   }
 
   return (
-    <div className="container">
+    <div>
       <div>
         <h1>
           {user.first_name}, here is a list of vacation plans for your
@@ -55,48 +55,63 @@ const VacationPlanPage = (props) => {
 
       <div className="grid-container">
         <div className="item3">
-          <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+          <div className="container">
+            <div className="border">
+              <AddVacationPlan addNewVacationPlanProperty={addVacationPlan} />
+            </div>
+          </div>
         </div>
         <div className="item2"></div>
         <div className="item4"></div>
       </div>
 
       <div>
-        <table cellPadding={5} cellSpacing={5} className="table-center">
-          <tbody>
-            <tr className="table-container">
-              <td>Customer Name</td>
-              <td>Hotel</td>
-              <td>Park</td>
-              <td>Addon</td>
-              <td>Travelers</td>
-              <td>Start Date</td>
-              <td>Total Days</td>
-            </tr>
-            {vacationPlans.map((vacationPlan, i) => (
-              <tr key={i} className="table-container">
-                <td>
-                  {vacationPlan.customer.first_name}{" "}
-                  {vacationPlan.customer.last_name}{" "}
-                </td>
-                <td>{vacationPlan.hotel.hotel_name}</td>
-                <td>{vacationPlan.park.park_name}</td>
-                <td>{vacationPlan.addon.addon_name}</td>
-                <td>{vacationPlan.total_travelers}</td>
-                <td>{vacationPlan.start_date}</td>
-                <td>{vacationPlan.total_days}</td>
-                <td>
-                  <button onClick={() => deleteVacationPlan(vacationPlan.id)}>
-                    Delete
-                  </button>
-                  <a href="http://127.0.0.1:8000/api/vacation_plan/pdf/">PDF</a>
-                  {/* <Link to="/single_vacation_plan/">
-                    <button>Select</button>
-                  </Link> */}
-                </td>
+        <table cellPadding={5} cellSpacing={5} className="container">
+          <div>
+            <tbody>
+              <tr>
+                <td>Customer Name</td>
+                <td>Hotel</td>
+                <td>Park</td>
+                <td>Addon</td>
+                <td>Travelers</td>
+                <td>Start Date</td>
+                <td>Total Days</td>
               </tr>
-            ))}
-          </tbody>
+              {vacationPlans.map((vacationPlan, i) => (
+                <tr key={i}>
+                  <td>
+                    {vacationPlan.customer.first_name}{" "}
+                    {vacationPlan.customer.last_name}{" "}
+                  </td>
+                  <td>{vacationPlan.hotel.hotel_name}</td>
+                  <td>{vacationPlan.park.park_name}</td>
+                  <td>{vacationPlan.addon.addon_name}</td>
+                  <td>{vacationPlan.total_travelers}</td>
+                  <td>{vacationPlan.start_date}</td>
+                  <td>{vacationPlan.total_days}</td>
+
+                  <td>
+                    <a
+                      href="http://127.0.0.1:8000/api/vacation_plan/pdf/"
+                      className="pdf"
+                    >
+                      PDF
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      href="#"
+                      className="myButton"
+                      onClick={() => deleteVacationPlan(vacationPlan.id)}
+                    >
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </div>
         </table>
       </div>
     </div>

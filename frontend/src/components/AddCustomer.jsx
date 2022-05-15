@@ -57,7 +57,7 @@ const AddCustomer = (props) => {
   }
 
   return (
-    <div>
+    <div className="border">
       <form className="form" onSubmit={handleSubmit}>
         <input
           placeholder="First Name"
@@ -115,7 +115,7 @@ const AddCustomer = (props) => {
           value={zipcode}
           onChange={(event) => setZipcode(event.target.value)}
         ></input>
-        <button type="submit">ADD CUSTOMER</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

@@ -20,6 +20,7 @@ const LoginPage = () => {
 
   return (
     <div className="container">
+    <div className="border">
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
@@ -45,6 +46,7 @@ const LoginPage = () => {
         <Link to="/register">Click to register!</Link>
         <button>Login!</button>
       </form>
+    </div>
     </div>
   );
 };

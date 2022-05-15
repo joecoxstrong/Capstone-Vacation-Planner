@@ -18,9 +18,9 @@ p {
 }
 
 button {
-  background-color: rgb(2, 33, 133);
-  border: 2px solid steelblue;
-  color: rgb(136, 220, 248);
+  background-color: rgba(97, 188, 218, 0.999);
+  border: 2px solid black;
+  color: white;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
@@ -49,40 +49,57 @@ button:hover {
   outline: auto;
   overflow: auto;
   text-align: left;
-  color: black;
-  
-  
-  
+  color: black; 
 }
 .table-center{
   margin-left: auto;
   margin-right: auto;
-  
 }
 
+table, th, td {
+  border: 1px solid;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+}
+
+.border{
+  border-style: solid;
+  background-color: white;
+  border-radius: 5px;
+}
+
+
 .form {
+  
   width: 100%;
   align-items: left;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 2px;
-  padding-left: 2rem;
+  
+  padding: 1rem;
   
 }
 .update-form {
   width: 25%;
   align-items: right;
-  /* display: flex; */
+  
   flex-direction: column;
   justify-content: flex-end;
-  /* gap: 1rem; */
+  
   padding-left: 2rem;
   
 }
 
-h1{
+h1, h2{
   padding-bottom: 2rem;
+  text-shadow: -1px 1px 0 black,
+				  1px 1px 0 black,
+				  1px -1px 0 black,
+				  -1px -1px 0 black;
 }
 
 .bottom-space {
@@ -101,15 +118,15 @@ h1{
   display: flex;
   align-items: top;
   justify-content: center;
-  padding-top: 10vh;
+  padding-top: 5vh;
   
 }
 
 .hero::before {    
     content: "";
-    background-image: url('https://i.pinimg.com/1200x/89/10/14/891014b8cad4c34a4bd28e4dec91356d.jpg');
-    background-size:contain;
-    background-repeat: no-repeat;
+    background-image: url('https://www.teahub.io/photos/full/191-1912427_disney-theme-background.jpg');
+    background-size:100%;
+    background-repeat:repeat-y;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -117,12 +134,12 @@ h1{
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: .5;
+    opacity: .9;
 }
 
 h1 {
 position: relative;
-color:black;  
+color:white;  
 font-size: 4rem;
 line-height: 0.9;
 text-align: center;
@@ -154,8 +171,82 @@ text-align: center;
 }
 h2{
   position: relative;
-color:black;  
+color:white;  
 font-size: 2rem;
-line-height: 2;
+line-height: 1;
 text-align: center;
+}
+
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:11px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color:#bc3315;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+button {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:11px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+button:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+.pdf {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:11px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+.pdf:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+.pdf:active {
+	position:relative;
+	top:1px;
 }

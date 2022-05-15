@@ -63,7 +63,7 @@ const Addon = (props) => {
             onChange={(event) => setAddon_Price(event.target.value)}
           ></input>
 
-          <button type="submit">ADD ADDON</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     </div>
